@@ -299,6 +299,27 @@ body {
     background: #b3b3b3;
 }
 
+/* Pop-up */
+
+.popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ff0000;
+    color: #ffffff;
+    padding: 15px 25px;
+    border-radius: 6px;
+    font-size: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.popup.show {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* Centro */
 
 #footer-titulo-meio {
