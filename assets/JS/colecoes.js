@@ -1,3 +1,12 @@
+function updateFavIcons() {
+    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    document.querySelectorAll('.fav').forEach((icon, idx) => {
+        const id = (icon.closest('.grid-img')?.getAttribute('data-id')) || (idx + 1).toString();
+        const isFav = favorites.some(item => item.id == id);
+        icon.setAttribute('data-active', isFav ? 'true' : 'false');
+    });
+}
+
 document.querySelectorAll('.fav').forEach(icon => {
     icon.addEventListener('click', function(e) {
         e.preventDefault();
@@ -23,11 +32,12 @@ document.querySelectorAll('.fav').forEach(icon => {
     });
 });
 
-// Quando a página carrega, ativa os favoritos já salvos
-window.addEventListener('DOMContentLoaded', () => {
-    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-    favorites.forEach(fav => {
-        const favIcon = document.querySelectorAll('.fav')[fav.id - 1];
-        if (favIcon) favIcon.setAttribute('data-active', 'true');
-    });
+// Quando a página carrega, marca itens já favoritados
+window.addEventListener('DOMContentLoaded', updateFavIcons);
+
+// "Ouve" por mudanças em outras páginas, se baseando no localStorage
+window.addEventListener('storage', function(e) {
+    if (e.key === 'favorites') {
+        updateFavIcons();
+    }
 });
