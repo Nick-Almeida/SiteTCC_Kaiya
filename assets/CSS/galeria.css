@@ -63,203 +63,67 @@ body {
     align-items: center;
 }
 
-/* Carrossel */
-
-#carrossel {
-    width: 100vw;
-    max-width: 100%;
+/* Galeria */
+.galeria-container {
+    width: 98vw;
+    max-width: 1920px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    gap: 3vw;
 }
 
-#carrossel .carousel-inner,
-#carrossel .carousel-item,
-#carrossel .carousel-item img {
-    height: 500px;
-}
-
-#carrossel .carousel-item img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-}
-
-.overlay-carrossel {
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 2;
-    width: 100%;
-    pointer-events: none;
-}
-
-.titulo-carrossel {
-    color: #fff;
+.galeria-titulo {
+    grid-column: 1 / -1;
+    text-align: center;
     font-size: 2.2rem;
     margin-bottom: 24px;
-    pointer-events: auto;
+    color: #222;
 }
 
-#btn-carrossel {
-    background: #ccc;
-    color: #000000;
-    border: none;
-    border-radius: 6px;
-    padding: 12px 32px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    pointer-events: auto;
-    transition: background 0.2s;
-}
-
-#btn-carrossel:hover {
-    background: #b3b3b3;
-}
-
-/* imagens */
-
-#grid-pricipal {
+.galeria-ret-quad {
     display: grid;
-    grid-template-columns: repeat(17, 1fr);
-    grid-template-rows: repeat(9, 1fr);
-    gap: 0;
-    width: 100vw;
-    max-width: 100%;
-    height: 550px; /* Da pra ajustar */
-    position: relative;
+    grid-template-columns: 57vw 19vw;
+    gap: 3vw;
+    justify-content: center;
+    align-items: start;
 }
 
-.grid-img {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    transition: transform 0.2s, box-shadow 0.2s;
+.galeria-quad-ret {
+    display: grid;
+    grid-template-columns: 19vw 57vw;
+    gap: 3vw;
+    justify-content: center;
+    align-items: start;
 }
 
-.grid-img img {
-    width: 100%;
-    height: 100%;
+.galeria-ret,
+.galeria-quad {
+    display: grid;
+    grid-template-rows: auto auto;
+    align-items: start;
+}
+
+.galeria-ret img {
+    width: 57vw;
+    height: 19vw;
     object-fit: cover;
     display: block;
 }
 
-.grid-img:hover .grid-img-barra {
-    opacity: 1;
-    pointer-events: auto;
+.galeria-quad img {
+    width: 19vw;
+    height: 19vw;
+    object-fit: cover;
+    display: block;
 }
 
-.grid-img:hover::after {
-    opacity: 1;
-}
-
-.grid-img-barra {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 20%;
-    background: rgba(255, 255, 255, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    opacity: 0;
-    transition: opacity 0.2s;
-    pointer-events: none;
-}
-
-.quadrado-barra {
-    width: 25px;
-    height: 25px;
-    background: #fff;
-    color: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    margin-bottom: 4px;
-}
-
-/* Posicionamento */
-
-.img1 {
-    grid-column: 2 / span 3;
-    grid-row: 2 / span 6;
-}
-.img2 {
-    grid-column: 6 / span 3;
-    grid-row: 2 / span 6;
-}
-.img3 {
-    grid-column: 10 / span 3;
-    grid-row: 2 / span 6;
-}
-.img4 {
-    grid-column: 14 / span 3;
-    grid-row: 2 / span 6;
-}
-
-/* Descrição e Preço */
-
-#info1 {
-    grid-column: 2 / span 3;
-    grid-row: 8 / 9;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-
-#info2 {
-    grid-column: 6 / span 3;
-    grid-row: 8 / 9;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-
-#info3 {
-    grid-column: 10 / span 3;
-    grid-row: 8 / 9;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-
-#info4 {
-    grid-column: 14 / span 3;
-    grid-row: 8 / 9;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-}
-
-.img-desc {
-    font-size: 1rem;
-    color: #222;
-    font-weight: 500;
-    margin-bottom: 0;
-}
-
-.img-preco {
+.galeria-desc {
+    margin-top: 1vw;
     font-size: 1.1rem;
-    color: #000000;
-    font-weight: bold;
-    margin-top: 0px;
-}
-
-.img-desc, .img-preco {
-    text-align: left;         
-    align-self: start;
+    color: #222;
+    text-align: left;
+    max-width: 38vw;
 }
 
 /* Footer */
