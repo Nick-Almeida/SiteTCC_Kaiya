@@ -11,15 +11,12 @@ body {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
-    padding: 4px 32px;
+    padding: 0.5vh 3vw; 
     background: #ffffff;
 }
 
 #logo {
     justify-self: start;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #333;
 }
 
 #header > a {
@@ -30,13 +27,13 @@ body {
     padding: 0;
     margin: 0;
     line-height: 0;
-    height: 100px;
+    height: 10vh;
     width: auto;
 }
 
 #header > a img {
     display: block;
-    height: 100px;
+    height: 13vh;
     width: auto;
 }
 
@@ -46,7 +43,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     color: #333;
 }
 
@@ -59,7 +56,7 @@ body {
     grid-column: 3 / 4;
     justify-self: end;
     display: flex;
-    gap: 10px;
+    gap: 1vw;
     align-items: center;
 }
 
@@ -74,33 +71,35 @@ body {
 
 .produto-galeria {
     display: grid;
-    grid-template-columns: 90px 1fr;
-    gap: 24px;
+    grid-template-columns: auto 54vh minmax(280px, 1fr);
+    gap: 4vh 4vw; 
     align-items: start;
+    margin-bottom: 4vh;
 }
 
 .miniaturas {
     display: grid;
-    grid-template-rows: repeat(3, 120px);
-    gap: 16px;
+    grid-template-rows: repeat(3, 24vh);
+    gap: 1vh;
 }
 
 .miniaturas .miniatura {
-    width: 80px;
-    height: 120px;
+    width: 16vh;
+    height: 24vh;
     object-fit: cover;
     cursor: pointer;
     border: 2px solid transparent;
-    transition: border 0.2s;
+    transition: border-color 0.2s;
 }
 
-.miniaturas .miniatura:hover {
-    border: 2px solid #aaa;
+.miniaturas .miniatura:hover,
+.miniaturas .miniatura.active {
+    border-color: #e26666;
 }
 
 .produto-foto-grande {
-    width: 280px;
-    height: 420px;
+    width: 54vh;
+    height: 78vh;
     overflow: hidden;
     box-shadow: 0 2px 16px rgba(0,0,0,0.08);
     background: #fff;
@@ -129,14 +128,148 @@ body {
     z-index: 2;
 }
 
+.produto-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 0; 
+    margin-left: 2vw;
+}
+
+.produto-titulo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 2vh;
+    color: #222;
+}
+
+.produto-preco {
+    font-size: 1.2rem;
+    color: #e26666;
+    font-weight: bold;
+    margin-bottom: 2vh;
+}
+
+.produto-contador {
+    display: flex;
+    align-items: center;
+    margin-top: 2vh;
+    background: transparent;
+    border: 1.5px solid #111;
+    overflow: hidden;
+    width: 15vw;
+    height: 6vh;
+}
+
+.contador-btn {
+    background: transparent;
+    border: none;
+    font-size: 4vh;
+    width: 6vh;
+    height: 100%;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contador-btn:hover {
+    background: #eb7c7c;
+}
+
+.contador-numero {
+    flex: 1;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #222;
+}
+
+.produto-tamanhos {
+    display: flex;
+    gap: 1.2vw;
+    margin-top: 6vh;
+}
+
+.tamanho-btn {
+    width: 6vh;
+    height: 6vh;
+    background: #111;
+    color: #fff;
+    font-size: 2.8vh;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.tamanho-btn:hover {
+    opacity: 0.5;
+}
+
+.add-sacola {
+    margin-top: 3vh;
+    width: 100%;
+    border: 1.5px solid #111;
+    background: none;
+    padding: 1.5vh 2vw;
+    font-size: 1.2rem;
+    color: #222;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    font-weight: bold;
+    outline: none;
+    display: block;;
+}
+
+.add-sacola:hover,
+.add-sacola:focus {
+    background: #111;
+    color: #fff;
+}
+
+.produto-detalhes {
+    margin-top: 3vh;
+    width: 100%;
+}
+
+.produto-detalhes-titulo {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 1vh;
+}
+
+.produto-detalhes-desc {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.5;
+}
+
+.produto-detalhes,
+.produto-detalhes-desc {
+    white-space: normal;
+    word-break: break-word;
+}
+
 /* Footer */
 #footer {
     display: grid;
     grid-template-columns: repeat(17, 1fr);
-    grid-template-rows: repeat(9, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     background: #ffffff;
-    padding: 32px 0;
-    min-height: 220px;
+    padding: 18px 0;
+    min-height: 120px;
     position: relative;
 }
 
