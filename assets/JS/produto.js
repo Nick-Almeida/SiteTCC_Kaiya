@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
         foto.style.transition = 'transform 0.2s, transform-origin 0.2s';
     });
 
-    // Counter logic
     const menos = document.getElementById('contador-menos');
     const mais = document.getElementById('contador-mais');
     const numero = document.getElementById('contador-numero');
@@ -63,5 +62,19 @@ document.addEventListener('DOMContentLoaded', function() {
             valor++;
             numero.textContent = valor;
         });
+    }
+
+    const descricoes = {
+        "nina-sayers": "Composição: 100% Seda indiana<br>Vestido de um ombro só com zíper lateral e abertura na cintura, drapeados na parte da saia que adicionam um toque de elegância, echarpe que acompanha o vestido, adicionando um detalhe especial e chique.",
+        "odette": "Composição: Viscose 100% preto (Maxine alfaiataria)<br>Vestido midi com decote em V e manga bufante, zíper nas costas para fácil vestir e despir, acompanha body chain dourado para adicionar um toque de glamour.",
+        "odile": "Composição: Maxine Alfaiataria 100%.<br>- Tomara que caia com 3 cintos fixos que fazem parte da peça, fivela em dourado e babados que adicionam um toque de elegância, acompanha colar shocker para completar o look",
+        "camiseta-verde": "Camiseta verde ecológica, feita com materiais reciclados."
+    };
+
+    // Pega o parâmetro desc da URL
+    const descParam = params.get('desc');
+    const descDiv = document.querySelector('.produto-detalhes-desc');
+    if (descParam && descricoes[descParam] && descDiv) {
+        descDiv.innerHTML = descricoes[descParam];
     }
 });
