@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const mini1 = params.get('mini1');
     const mini2 = params.get('mini2');
     const mini3 = params.get('mini3');
+    const titulo = params.get('titulo');
+    const preco = params.get('preco');
 
     if (imgSrc) {
         const fotoGrande = document.getElementById('foto-grande');
@@ -25,6 +27,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (mini1) document.getElementById('mini1').src = mini1;
     if (mini2) document.getElementById('mini2').src = mini2;
     if (mini3) document.getElementById('mini3').src = mini3;
+
+    if (titulo) {
+        document.querySelector('.produto-titulo').textContent = decodeURIComponent(titulo);
+    }
+    if (preco) {
+        // Coloca virgula como separador decimal"
+        const precoFormatado = Number(preco).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        document.querySelector('.produto-preco').textContent = precoFormatado;
+    }
 
     fotoContainer.addEventListener('mousemove', function(e) {
         const rect = fotoContainer.getBoundingClientRect();
