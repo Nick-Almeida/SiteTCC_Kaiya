@@ -71,16 +71,19 @@ body {
 
 .produto-galeria {
     display: grid;
-    grid-template-columns: auto 54vh minmax(280px, 1fr);
+    grid-template-columns: 16vh 54vh minmax(280px, 1fr);
     gap: 4vh 4vw; 
     align-items: start;
     margin-bottom: 4vh;
 }
 
 .miniaturas {
-    display: grid;
-    grid-template-rows: repeat(3, 24vh);
+    display: flex;
+    flex-direction: column;
     gap: 1vh;
+    height: 80vh;
+    overflow-y: auto;
+    padding-right: 0.5vw;
 }
 
 .miniaturas .miniatura {
@@ -90,11 +93,16 @@ body {
     cursor: pointer;
     border: 2px solid transparent;
     transition: border-color 0.2s;
+    flex-shrink: 0;
 }
 
 .miniaturas .miniatura:hover,
 .miniaturas .miniatura.active {
     border-color: #e26666;
+}
+
+.miniaturas::-webkit-scrollbar {
+    display: none;
 }
 
 .produto-foto-grande {

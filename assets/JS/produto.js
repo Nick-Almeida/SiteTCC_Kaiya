@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mini1 = params.get('mini1');
     const mini2 = params.get('mini2');
     const mini3 = params.get('mini3');
+    const mini4 = params.get('mini4');
     const titulo = params.get('titulo');
     const preco = params.get('preco');
 
@@ -27,6 +28,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (mini1) document.getElementById('mini1').src = mini1;
     if (mini2) document.getElementById('mini2').src = mini2;
     if (mini3) document.getElementById('mini3').src = mini3;
+    if (mini4) document.getElementById('mini4').src = mini4;
+
+    if (mini4) {
+    document.getElementById('mini4').src = mini4;
+    document.getElementById('mini4').style.display = '';
+    } else {
+    document.getElementById('mini4').style.display = 'none';
+    }
 
     if (titulo) {
         document.querySelector('.produto-titulo').textContent = decodeURIComponent(titulo);
@@ -76,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const descricoes = {
+        "R_B": "Composição: Maxine Alfaiataria Viscose 100% Organa: Viscose 69% Linho 31%<br>- Look composto por duas peças: top e shorts saia Top com manga desconstruída caída no ombro, trazendo um toque de sensualidade e charme Shorts saia arredondado com corte frontal, adicionando volume e firmeza ao look Cores: preto e vermelho, uma combinação clássica e poderosa",
         "nina-sayers": "Composição: 100% Seda indiana<br>Vestido de um ombro só com zíper lateral e abertura na cintura, drapeados na parte da saia que adicionam um toque de elegância, echarpe que acompanha o vestido, adicionando um detalhe especial e chique.",
         "odette": "Composição: Viscose 100% preto (Maxine alfaiataria)<br>Vestido midi com decote em V e manga bufante, zíper nas costas para fácil vestir e despir, acompanha body chain dourado para adicionar um toque de glamour.",
         "odile": "Composição: Maxine Alfaiataria 100%.<br>- Tomara que caia com 3 cintos fixos que fazem parte da peça, fivela em dourado e babados que adicionam um toque de elegância, acompanha colar shocker para completar o look",
@@ -87,5 +97,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const descDiv = document.querySelector('.produto-detalhes-desc');
     if (descParam && descricoes[descParam] && descDiv) {
         descDiv.innerHTML = descricoes[descParam];
+    }
+
+    const miniaturas = document.querySelector('.miniaturas');
+    if (miniaturas) {
+        miniaturas.addEventListener('wheel', function(e) {
+            const atTop = miniaturas.scrollTop === 0;
+            const atBottom = miniaturas.scrollHeight - miniaturas.scrollTop === miniaturas.clientHeight;
+            if (
+                (e.deltaY < 0 && atTop) ||
+                (e.deltaY > 0 && atBottom)
+            ) {
+                e.preventDefault();
+            }
+        }, { passive: false });
     }
 });

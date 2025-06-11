@@ -101,18 +101,6 @@ body {
     margin-bottom: 40px;
 }
 
-.sobre-titulo-principal {
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-bottom: 8px;
-    text-align: left;
-}
-
-.sobre-texto-principal {
-    font-size: 1.2rem;
-    text-align: left;
-}
-
 .sobre-linhas {
     width: 100%;
     display: flex;
@@ -125,13 +113,6 @@ body {
     align-items: baseline;
     font-size: 1.1rem;
     margin-bottom: 0.5em;
-}
-
-.sobre-linha-titulo {
-    font-weight: bold;
-    text-align: left;
-    font-size: 1.3rem;
-    flex-shrink: 0;
 }
 
 .sobre-linha-texto {
