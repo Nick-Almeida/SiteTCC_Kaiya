@@ -85,11 +85,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const descricoes = {
-        "R_B": "Composição: Maxine Alfaiataria Viscose 100% Organa: Viscose 69% Linho 31%<br>- Look composto por duas peças: top e shorts saia Top com manga desconstruída caída no ombro, trazendo um toque de sensualidade e charme Shorts saia arredondado com corte frontal, adicionando volume e firmeza ao look Cores: preto e vermelho, uma combinação clássica e poderosa",
+        "R_B": "Composição: Maxine Alfaiataria Viscose 100% Organa: Viscose 69% Linho 31%<br>Look composto por duas peças: top e shorts saia Top com manga desconstruída caída no ombro, trazendo um toque de sensualidade e charme Shorts saia arredondado com corte frontal, adicionando volume e firmeza ao look Cores: preto e vermelho, uma combinação clássica e poderosa",
         "nina-sayers": "Composição: 100% Seda indiana<br>Vestido de um ombro só com zíper lateral e abertura na cintura, drapeados na parte da saia que adicionam um toque de elegância, echarpe que acompanha o vestido, adicionando um detalhe especial e chique.",
         "odette": "Composição: Viscose 100% preto (Maxine alfaiataria)<br>Vestido midi com decote em V e manga bufante, zíper nas costas para fácil vestir e despir, acompanha body chain dourado para adicionar um toque de glamour.",
-        "odile": "Composição: Maxine Alfaiataria 100%.<br>- Tomara que caia com 3 cintos fixos que fazem parte da peça, fivela em dourado e babados que adicionam um toque de elegância, acompanha colar shocker para completar o look",
-        "camiseta-verde": "Camiseta verde ecológica, feita com materiais reciclados."
+        "odile": "Composição: Maxine Alfaiataria 100%.<br>Tomara que caia com 3 cintos fixos que fazem parte da peça, fivela em dourado e babados que adicionam um toque de elegância, acompanha colar shocker para completar o look",
+        "Swan": "Composição: Viscose 100%<br>Blazer elegante e sofisticado, feito em Maxine alfaiataria off white, manga mega bufante que se fixa no ombro, botões dourados. Combinação perfeita de elegância e charme",
+        "Red": "Conjunto com top tomara que caia com decote em V e longo laço de 1 metro e calça pantalona com cós alto, ziper e botão, combinação perfeita de elegância e sensualidade"
     };
 
     // Pega o parâmetro desc da URL
@@ -111,5 +112,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
             }
         }, { passive: false });
+    }
+    const tamanhosParam = params.get('tamanhos');
+    if (tamanhosParam) {
+        const tamanhosDisponiveis = tamanhosParam.split(',').map(t => t.trim());
+        document.querySelectorAll('.tamanho-btn').forEach(btn => {
+            if (!tamanhosDisponiveis.includes(btn.textContent.trim())) {
+                btn.style.display = 'none';
+            } else {
+                btn.style.display = '';
+            }
+        });
     }
 });
